@@ -1,4 +1,5 @@
 import time
+import random
 from adafruit_servokit import ServoKit
 
 # Set channels to the number of servo channels on your kit.
@@ -12,8 +13,18 @@ while i < 10:
     kit.servo[2].angle = 180
     time.sleep(.25)
     kit.servo[2].angle = 0
-    time.sleep(3)
+    
+    #random.randrange(start, stop[, step])
+    x = random.randrange(1,10,1)
+    print(x)
+   
+    time.sleep(x)
     print(i)
     if i == 10:
         break
     i += 1
+
+
+
+
+
