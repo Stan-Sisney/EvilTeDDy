@@ -1,14 +1,20 @@
 import time
 import random
+from pynput import keyboard
+from time import sleep
 from adafruit_servokit import ServoKit
 
-# Set channels to the number of servo channels on your kit.
-# 8 for FeatherWing, 16 for Shield/HAT/Bonnet.
+# 16 for Shield/HAT/Bonnet.
 kit = ServoKit(channels=16)
 
+def on_release(key):
+    if key == keyboard.Key.esc:
+        return False
+    
+listener = keyboard.Listener(on_release=on_release)
+listener.start()
 
-i = 0
-while i < 10:
+while listener.is_alive():
     # eyes
     kit.servo[2].angle = 180
     time.sleep(.25)
@@ -19,12 +25,3 @@ while i < 10:
     print(x)
    
     time.sleep(x)
-    print(i)
-    if i == 10:
-        break
-    i += 1
-
-
-
-
-
