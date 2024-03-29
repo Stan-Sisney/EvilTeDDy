@@ -1,17 +1,17 @@
-import io
-import time
 
-import pyglet
+import io
+import pygame
 from gtts import gTTS
 
-pyglet.options["audio"] = ("pulse",)
-
-def speak(words: str, lang: str="en"):
+# To play audio text-to-speech during execution
+def speak(my_text):
     with io.BytesIO() as f:
-        gTTS(text = words, lang=lang).write_to_fp(f)
+        gTTS(text=my_text, lang='en').write_to_fp(f)
         f.seek(0)
-        
-        player = pyglet.media.load('_.mp3', file=f).play()
-        while player.playing:
-            pyglet.app.platform_event_loop.dispatch_posted_events()
-            pyglet.clock.tick()
+        pygame.mixer.init()
+        pygame.mixer.music.load(f)
+        pygame.mixer.music.play()
+        while pygame.mixer.music.get_busy():
+            continue
+
+speak('luke, i am your father')
