@@ -1,7 +1,6 @@
 import time
-import random
 from pynput import keyboard
-from time import sleep
+import random
 
 def on_release(key):
     if key == keyboard.Key.esc:
@@ -9,7 +8,6 @@ def on_release(key):
     
 listener = keyboard.Listener(on_release=on_release)
 listener.start()
-
 while listener.is_alive():
     
     #random.randrange(start, stop[, step])
@@ -17,4 +15,3 @@ while listener.is_alive():
     print(x)
    
     time.sleep(x)
-
