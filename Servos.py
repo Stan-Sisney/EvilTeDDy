@@ -21,3 +21,4 @@ time.sleep(1)
 kit.servo[2].angle = 180
 time.sleep(1)
 kit.servo[2].angle = 0
+# Test
