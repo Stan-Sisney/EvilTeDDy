@@ -14,4 +14,4 @@ def speak(my_text):
         while pygame.mixer.music.get_busy():
             continue
 
-speak('Amanda loves evil teddy')
+speak('lock washers do not lock, says teddy')
