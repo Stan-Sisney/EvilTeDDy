@@ -1,8 +1,8 @@
 import ollama
-ollama.pull('llama2')
+ollama.pull('phi')
 stream = ollama.chat(
-    model='llama2',
-    messages=[{'role': 'user', 'content': 'Why is the sky blue?'}],
+    model='phi',
+    messages=[{'role': 'user', 'content': 'do yhou like Mozart?'}],
     stream=True,
 )
 
