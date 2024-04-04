@@ -2,7 +2,7 @@ import ollama
 ollama.pull('phi')
 stream = ollama.chat(
     model='phi',
-    messages=[{'role': 'user', 'content': 'do yhou like Mozart?'}],
+    messages=[{'role': 'user', 'content': 'do you like Mozart?'}],
     stream=True,
 )
 
