@@ -1,10 +1,16 @@
 import speech_recognition as sr
+import pyaudio
+
+for index, name in enumerate(sr.Microphone.list_microphone_names()):
+#    print(name, " ", index)
+    pass
 
 # obtain audio from the microphone
 r = sr.Recognizer()
-with sr.Microphone() as source:
+with sr.Microphone(device_index=1) as source:
+    #r.adjust_for_ambient_noise(source, duration=1)
     print("Say something!")
-    audio = r.listen(source)
+    audio = r.record(source, duration=3)
 
 # recognize speech using Sphinx
 try:

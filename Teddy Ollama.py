@@ -1,10 +1,10 @@
 import ollama
-ollama.pull('phi')
+ollama.pull('mistral')
 stream = ollama.chat(
-    model='phi',
+    model='mistral',
     messages=[{'role': 'user', 'content': 'do you like Mozart?'}],
     stream=True,
 )
 
 for chunk in stream:
-  print(chunk['message']['content'], end='', flush=True)
+  print(chunk['message']['content'], end='', flush=True) 
