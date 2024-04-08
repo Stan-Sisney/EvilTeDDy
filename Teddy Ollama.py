@@ -1,5 +1,5 @@
 import ollama
-ollama.pull('mistral')
+#ollama.pull('mistral')
 stream = ollama.chat(
     model='mistral',
     messages=[{'role': 'user', 'content': 'do you like Mozart?'}],
