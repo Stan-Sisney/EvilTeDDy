@@ -1,28 +1,18 @@
+import asyncio
+from ollama import AsyncClient
+import pygame
+from gtts import gTTS
 import io
-#import pygame
-#from gtts import gTTS
-from pynput import keyboard
-from time import sleep
+import ollama
 
-#init a string var
-#stark keybopard list
-#build string up
-#hit enter pass string to gtts
-#play sound
-#esc stops everything
+stream = ollama.chat(
+    model='mistral',
+    messages=[{'role': 'user', 'content': 'Why is the sky blue?'}],
+    stream=True,
+    )
 
-x=""
-y=""
-def on_press(key):
-    x=key    
-    y=(x)
-    print(y) 
-    if key == keyboard.Key.enter:
-        # Stop listener
-        return False
 
-# Collect events until released
-with keyboard.Listener(on_press=on_press,) as listener:
-    listener.join()
-
-    
+buffer = io.BytesIO ()
+for chunk in stream.iter_bytes(chunksize=4096):
+  buffer.print(chunk['message']['content'], end='', flush=True)
+buffer.seek(0)
