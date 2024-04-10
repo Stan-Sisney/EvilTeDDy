@@ -1,3 +1,4 @@
+import ollama
 import asyncio
 from ollama import AsyncClient
 from pynput import keyboard
@@ -6,6 +7,7 @@ from time import sleep
 global string 
 string = ""
 
+#ollama.pull('mistral') #only needed if mistral is already dl
 async def chat():
   global string
   bigmsg = ""
@@ -35,5 +37,5 @@ listener = keyboard.Listener(on_release=on_release)
 listener.start()
 
 while listener.is_alive():
-    print(string)
+    print('key')
     sleep(5)
